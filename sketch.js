@@ -26,8 +26,6 @@
 // }
 
 
-
-
 //   class Pelota{
 //     //plano de instrucciones
 //     constructor(){
@@ -65,8 +63,8 @@ let particulas = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  let c1 = color(213, 217, 224);
-  let c2 = color(196, 218, 210);
+  let c1 = color(213, 217, 224); //? color numero 1
+  let c2 = color(196, 218, 210); //? color numero 2
   Particula.drawGradientBackground(c1, c2);
 }
 
