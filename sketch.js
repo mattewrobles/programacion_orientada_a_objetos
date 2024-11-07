@@ -64,37 +64,41 @@
 let particulas = [];
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-  }
+  createCanvas(windowWidth, windowHeight);
+  let c1 = color(213, 217, 224);
+  let c2 = color(196, 218, 210);
+  Particula.drawGradientBackground(c1, c2);
+}
 
-  function draw(){
-    background(25);
-    let nuevaParticula = new Particula(mouseX, mouseY);
+function draw() {
+  let c1 = color(213, 217, 224);
+  let c2 = color(196, 218, 210);
+  Particula.drawGradientBackground(c1, c2);
+
+  let numParticulas = 5; // Number of particles to generate per frame
+
+  for (let i = 0; i < numParticulas; i++) {
+    let nuevaParticula = new Particula(mouseX, mouseY, random(10, 30)); // Random size between 5 and 20
     particulas.push(nuevaParticula);
-    for(let i = 0; i < particulas.length; i++){
-      particulas[i].update();
-      particulas[i].display();
-    }
-    for(let i = 0; i < particulas.length; i++){
-      if(!particulas[i].life){
-        particulas.splice(i, 1);
-      }
-    }
-
-    // particulas = particulas.filter((pelota)=> pelota.life);
-
-    // noFill();
-    // stroke(255, 99, 145);
-    // strokeWeight(1);
-
-    // for(let i = 0; i < particulas.length - 1; 1++){
-    //     line(
-    //       particulas[i].posx, 
-    //       particulas[i].posy,
-    //       particulas[i + 1].posy,
-    //       particulas[i +1].posy,
-    //     );
-    // }
   }
 
+  for (let i = 0; i < particulas.length; i++) {
+    particulas[i].update();
+    particulas[i].display();
+  }
 
+  particulas = particulas.filter((pelota) => pelota.life);
+
+  noFill();
+  stroke(255, 99, 145);
+  strokeWeight(1);
+
+  for (let i = 0; i < particulas.length - 1; i++) {
+    line(
+      particulas[i].posX,
+      particulas[i].posY,
+      particulas[i + 1].posX,
+      particulas[i + 1].posY
+    );
+  }
+}
